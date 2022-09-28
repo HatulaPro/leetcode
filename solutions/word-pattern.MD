@@ -21,13 +21,13 @@ var wordPattern = function(pattern, s) {
 
 ## The Solution
 
-So, my goal is to assign every letter in `pattern` a word in `s`. The first thing that came to my mind is to simply split the sentence by spaces. That would give my access to every individual word:
+So, my goal is to assign every letter in `pattern` a word in `s`. The first thing that came to my mind is to simply split the sentence by spaces. That would give me access to every individual word:
 
 ```js
 const wordsArray = s.split(' ');
 ```
 
-Splitting is has an O(n) time complexity, but since we are iterating over each letter/word anyway, it is going to be O(n) either way.
+Splitting has an O(n) time complexity, but since we are iterating over each letter/word anyway, it is going to be O(n) either way. I don't think we can go any faster than that.
 
 > ### NOTE:
 > We could also implement a custom `split` function that would (probably) be more optimized for this specific task, but for the sake of simplicity I chose not to.
@@ -70,7 +70,7 @@ for (let i = 0; i < pattern.length; i++) {
     if (map.has(currentLetter)) { 
         if (map.get(currentLetter) !== currentWord) return false;
     } else {  
-        if (usedWords.has(currentWord)) return false; // If word has been seen before, but does not match the current letter, return false
+        if (usedWords.has(currentWord)) return false; // If word has been seen before, but the current letter hasn't, return false
         
         map.set(currentLetter, currentWord); 
         usedWords.add(currentWord); // Add the word to the list of seen words
